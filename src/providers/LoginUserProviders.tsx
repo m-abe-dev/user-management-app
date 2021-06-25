@@ -10,7 +10,7 @@ import React, {
 import { User } from "../types/api/user";
 type LoginUser = User & { isAdmin: boolean };
 
-type LoginUserContextType = {
+export type LoginUserContextType = {
   loginUser: LoginUser | null;
   setLoginUser: Dispatch<SetStateAction<LoginUser | null>>;
 };
