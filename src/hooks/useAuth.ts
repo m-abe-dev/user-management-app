@@ -18,7 +18,10 @@ export const useAuth = () => {
         .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           if (res.data) {
-            setLoginUser(res.data);
+            // contextにログインユーザーの情報を保存
+            // サンプル的にidが10のユーザーを管理者としてみる
+            const isAdmin = res.data.id === 10 ? true : false;
+            setLoginUser({ ...res.data, isAdmin });
             showMessage({ title: "ログインしました", status: "success" });
             history.push("/home");
           } else {
